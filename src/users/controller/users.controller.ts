@@ -23,7 +23,7 @@ export class UsersController {
     }
 
     @Get(':id')
-    @ApiOperation({summary:'显示指定id的用户详情,例如id：bdf1c033-d363-439e-b33c-51ed41bb6624'})
+    @ApiOperation({summary:'显示指定id的用户详情,例如id：f3be2af6-1a09-4f6b-8642-02603cd9a893'})
     async findOne(@Param('id', new ParseUUIDPipe()) id:string) {
         const user = await this.getUserApp.getById(id);
         return user;
