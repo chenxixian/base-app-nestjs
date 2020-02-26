@@ -5,6 +5,7 @@ import { ICreateUrlApplication } from '../interfaces/applictions/create.url.appl
 import { IGetUrlApplication } from '../interfaces/applictions/get.url.application.interface';
 import { ValidationPipe } from '../../common/validation.pipe';
 import { ApiTags, ApiOperation} from '@nestjs/swagger';
+import { access } from 'fs';
 
 @ApiTags('网址模块')
 @Controller('urls')
@@ -15,6 +16,13 @@ export class UrlsController {
     ) {}
 
     @UsePipes(new ValidationPipe())
+
+    @Get('/list')
+    @ApiOperation({summary:'列出网址id'})
+    async findAll(){
+        return access
+    }
+
     @Post('/create')
     @ApiOperation({summary:'创建网址'})
      async create(@Res() res, @Body() urlDomain: UrlDomain) {
@@ -28,6 +36,7 @@ export class UrlsController {
         const user = await this.getUrlApp.getById(id);
         return user;
     }
+
 
 
 }

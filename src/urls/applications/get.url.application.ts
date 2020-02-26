@@ -15,4 +15,13 @@ export class GetUrlApplication implements IGetUrlApplication {
         }
         return url;
     }
+
+    async listId(id: string) {
+        const url = await this.getUrlService.getById;
+        if (!url) {
+            throw new NotFoundException(`Url with id ${id} was not found`);
+        }
+        return url;
+    }
+
 }
